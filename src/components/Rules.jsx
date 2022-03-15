@@ -8,7 +8,7 @@ export default function Rules({rules}) {
 
     if(rules){
         return (
-            <ul>
+            <ul style={{height: "100%"}}>
                 {
                     rules.map((elem, i) => <li key={i} style={styles}>{elem}</li>)
                 }

@@ -1,0 +1,12 @@
+.BoardLine {
+  display: flex;
+  flex-direction: row;
+}
+
+.BoardItem {
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  margin: 1px;
+  border-radius: 5px;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
+import GameTools from './GameTools/GameTools';
 import Rules from './Rules';
 import TabBox from './TabBox/TabBox'
 
-export default function Tools() {
+export default function Tools({logs, actionNewGame, actionNextPlayer}) {
 
     const rulesItem = [
         "Генерация изначальных квадратов",
@@ -17,7 +18,7 @@ export default function Tools() {
     const tabsItems = [
         {
             name: "Игра",
-            widget : <div className='Error'>Логи игры</div>
+            widget: <GameTools logs={logs} actionNewGame={actionNewGame} actionNextPlayer={actionNextPlayer}/>
         },
         {
             name: "Правила",

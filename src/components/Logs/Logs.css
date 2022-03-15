@@ -1,0 +1,16 @@
+.Logs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 2px solid white;
+  overflow-y: scroll;
+}
+
+.Logs .Header {
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 2px solid white;
+}

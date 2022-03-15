@@ -16,14 +16,12 @@ export default function TabBox({tabs}) {
             <div className='TabBox'>
                 <div className='Tabs'>
                     {
-                        tabs.map((elem, i) => <TabItem key={i} tabName={elem.name} idx={i} isSelect={(CurrentItem === i)} action={SelectItem}/>)
+                        tabs.map((elem, i) => <TabItem key={i.toString()} tabName={elem.name} idx={i} isSelect={(CurrentItem === i)} action={SelectItem}/>)
                     }
                 </div>
-                <div className='Box'>
-                    {
-                        tabs.map((elem, i) => (CurrentItem === i) && elem.widget)
-                    }
-                </div>
+                {
+                    tabs[CurrentItem].widget
+                }
             </div>
         )
     } else {

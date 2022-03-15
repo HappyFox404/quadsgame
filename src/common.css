@@ -6,51 +6,55 @@
 */
 
 :root {
-    --radius:20px;
+  --radius: 10px;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #347eb7;
-    color: white;
-    font-size: 1.3em;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #347eb7;
+  color: white;
+  font-size: 1.3em;
 }
 
 .App {
-    width: 90%;
-    margin: auto;
-    margin-top: 5vh;
-    min-height: 90vh;
-    background-color: #333941;
-    border-radius: var(--radius);
-    display: flex;
-    flex-direction: row;
+  width: 90%;
+  margin: auto;
+  margin-top: 5vh;
+  height: 90vh;
+  background-color: #333941;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: row;
 }
 
 .Box {
-    padding: 10px;
+  padding: 10px;
 }
 
 .Board {
-    flex: 2;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Tools {
-    flex: 1;
-    margin-left: 20px;
-    background-color: #414A5B;
-    border-radius: 0 var(--radius) var(--radius) 0;
+  flex: 1;
+  margin-left: 20px;
+  background-color: #414a5b;
+  border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 .Error {
-    width: 100%;
-    height: 100%;
-    color: red;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5em;
+  width: 100%;
+  height: 100%;
+  color: red;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
 }
