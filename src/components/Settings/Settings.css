@@ -1,0 +1,17 @@
+.SettingsLine {
+  width: 100%;
+  margin: 10px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.Label {
+  flex: 1;
+  font-size: 1.4em;
+}
+
+.Line {
+  flex: 3;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './SettingsLine';
+import './Settings.css';
 import SettingsLine from './SettingsLine';
 
 export default function Settings({items}) {
@@ -8,7 +8,7 @@ export default function Settings({items}) {
     return (
       <div style={{height:"90%", width:"100%"}}>
         {
-          items.map((item) => <SettingsLine item={item}/>)
+          items.map((item, i) => <SettingsLine key={i.toString()} item={item}/>)
         }
       </div>
     )

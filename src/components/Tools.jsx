@@ -17,14 +17,18 @@ export default function Tools({logs, actionNewGame, actionNextPlayer}) {
 
     const settingsItems = [
         {
-            label: "Игрок 1",
+            label: "Имя первого игрока",
             name: "player1Name",
-            type: "text"
+            type: "text",
+            placeHolder: "Имя игрока",
+            value: "Игрок 1"
         },
         {
-            label: "Игрок 2",
+            label: "Имя второго игрока",
             name: "player2Name",
-            type: "text"
+            type: "text",
+            placeHolder: "Имя игрока",
+            value: "Игрок 2"
         }
     ];
 
