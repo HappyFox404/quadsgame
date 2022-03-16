@@ -47,7 +47,9 @@ export default function App() {
 
   return (
     <div className='App'>
+      <div style={{flex : "0.25"}}></div>
       <Board items={BoardQuads}/>
+      <div style={{flex : "0.25"}}></div>
       <Tools logs={LogItems} actionNewGame={NewGame} actionNextPlayer={NextPlayer}/>
     </div>
   )

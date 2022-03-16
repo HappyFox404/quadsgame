@@ -22,7 +22,11 @@ export default function Tools({logs, actionNewGame, actionNextPlayer}) {
         },
         {
             name: "Правила",
-            widget : <Rules rules={rulesItem}/>
+            widget: <Rules rules={rulesItem}/>
+        },
+        {
+            name: "Настройка",
+            widget: <div style={{height:"90%"}}>Настройка</div>
         }
     ];
 
