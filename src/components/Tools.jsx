@@ -1,6 +1,7 @@
 import React from 'react'
 import GameTools from './GameTools/GameTools';
 import Rules from './Rules';
+import Settings from './Settings/Settings';
 import TabBox from './TabBox/TabBox'
 
 export default function Tools({logs, actionNewGame, actionNextPlayer}) {
@@ -14,7 +15,19 @@ export default function Tools({logs, actionNewGame, actionNextPlayer}) {
         "Игра считается оконченной, когда не остается свободных клеток"
     ];
 
-    //Error стоит временно
+    const settingsItems = [
+        {
+            label: "Игрок 1",
+            name: "player1Name",
+            type: "text"
+        },
+        {
+            label: "Игрок 2",
+            name: "player2Name",
+            type: "text"
+        }
+    ];
+
     const tabsItems = [
         {
             name: "Игра",
@@ -26,7 +39,7 @@ export default function Tools({logs, actionNewGame, actionNextPlayer}) {
         },
         {
             name: "Настройка",
-            widget: <div style={{height:"90%"}}>Настройка</div>
+            widget: <Settings items={settingsItems}/>
         }
     ];
 
