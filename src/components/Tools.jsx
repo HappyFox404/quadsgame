@@ -4,7 +4,7 @@ import Rules from './Rules';
 import Settings from './Settings/Settings';
 import TabBox from './TabBox/TabBox'
 
-export default function Tools({logs, actionNewGame, actionNextPlayer}) {
+export default function Tools({logs, settingsItems, changeSetting, actionNewGame, actionNextPlayer}) {
 
     const rulesItem = [
         "Генерация изначальных квадратов",
@@ -13,23 +13,6 @@ export default function Tools({logs, actionNewGame, actionNextPlayer}) {
         "Выигрывает тот игрок у кого больше область",
         "Если игрок не может разместить элемент, он пропускает ход",
         "Игра считается оконченной, когда не остается свободных клеток"
-    ];
-
-    const settingsItems = [
-        {
-            label: "Имя первого игрока",
-            name: "player1Name",
-            type: "text",
-            placeHolder: "Имя игрока",
-            value: "Игрок 1"
-        },
-        {
-            label: "Имя второго игрока",
-            name: "player2Name",
-            type: "text",
-            placeHolder: "Имя игрока",
-            value: "Игрок 2"
-        }
     ];
 
     const tabsItems = [
@@ -43,7 +26,7 @@ export default function Tools({logs, actionNewGame, actionNextPlayer}) {
         },
         {
             name: "Настройка",
-            widget: <Settings items={settingsItems}/>
+            widget: <Settings items={settingsItems} changeSetting={ changeSetting}/>
         }
     ];
 

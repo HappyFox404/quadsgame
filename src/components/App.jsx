@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import '../common.css';
+import { ChangeObject, GenerateDiceRoll, GenerateLog, GetGameState, ChangeGameState, SetGameState, GameState, DiceRoll, GameStateExsists} from '../utils/util';
 import Board from './Game/Board';
 import Tools from './Tools';
 
@@ -10,21 +11,44 @@ export default function App() {
 
   const [BoardQuads, setBoardQuads] = useState([]);
   const [LogItems, setLogItems] = useState([]);
-  let DiceRoll = [];
+  const [SettingsItems, setSettingsItems] = useState([
+    {
+      id: 1,
+      label: "Имя первого игрока",
+      name: "player1Name",
+      type: "text",
+      placeHolder: "Имя игрока",
+      value: "Игрок 1"
+    },
+    {
+      id: 2,
+      label: "Имя второго игрока",
+      name: "player2Name",
+      type: "text",
+      placeHolder: "Имя игрока",
+      value: "Игрок 2"
+    }
+  ]);
 
-  function RandomRange(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
+  if (!GameStateExsists()) { 
+    SetGameState(GameState(0));
   }
   
-  function GenerateDiceRoll() { 
-    DiceRoll = [RandomRange(1, 6), RandomRange(1, 6)];
+  const ChangeSettings = (item, ValueChanged) => {
+    let newSettingsItems = [];
+
+    SettingsItems.forEach(element => {
+      if (element.id !== item.id)
+        newSettingsItems.push(element);
+      else {
+        newSettingsItems.push(ChangeObject(item, {value: ValueChanged}));
+      }
+    });
+
+    setSettingsItems(newSettingsItems);
   };
 
-  function GenerateLog(txt, st) { 
-    return { text: txt, status: st };
-  };
+  //GenerateLog('Ходит игрок: ' + GetNamePlayer(CurrentPlayer),'white')
 
   const NewGame = () => {
     let pole = [];
@@ -35,14 +59,30 @@ export default function App() {
       }
       pole.push(line);
     }
+
     setBoardQuads(pole);
-    GenerateDiceRoll();
-    setLogItems([GenerateLog('Начата новая игра', 'white'), GenerateLog('Бросок кубиков: ' + String(DiceRoll[0]) + ' ' + String(DiceRoll[1]), 'white')]);
+    SetGameState(GameState(1));
+    setLogItems([GenerateLog('Начата новая игра', 'white'), GenerateLog('Бросок кубиков: ' + String(DiceRoll(0)) + ' ' + String(DiceRoll(1)), 'white')]);
   };
 
-  const NextPlayer = () => { 
-    GenerateDiceRoll();
-    setLogItems([...LogItems, GenerateLog('Бросок кубиков: ' + String(DiceRoll[0]) + ' ' + String(DiceRoll[1]), 'white')]);
+  const NextPlayer = () => {
+    if (GetGameState().currentPlayer === 0)
+      return;
+    
+    if (GetGameState().currentPlayer === 1)
+      ChangeGameState({
+        currentPlayer: 2,
+        diceRoll: GenerateDiceRoll()
+      });
+    else
+      ChangeGameState({
+        currentPlayer: 1,
+        diceRoll: GenerateDiceRoll()
+      });
+    
+    const addLogs = [GenerateLog('Бросок кубиков: ' + String(DiceRoll(0)) + ' ' + String(DiceRoll(1)), 'white')];
+
+    setLogItems([...LogItems, ...addLogs]);
   };
 
   return (
@@ -50,7 +90,7 @@ export default function App() {
       <div style={{flex : "0.25"}}></div>
       <Board items={BoardQuads}/>
       <div style={{flex : "0.25"}}></div>
-      <Tools logs={LogItems} actionNewGame={NewGame} actionNextPlayer={NextPlayer}/>
+      <Tools logs={LogItems} settingsItems={SettingsItems} changeSetting={ChangeSettings} actionNewGame={NewGame} actionNextPlayer={NextPlayer}/>
     </div>
   )
 }
