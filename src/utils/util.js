@@ -48,6 +48,10 @@ function DiceRoll(item) {
         return GetGameState().diceRoll;
 }
 
+function GetPlayer() { 
+    return GetGameState().currentPlayer;
+}
+
 function GameStateExsists() { 
     return localStorage.getItem('gameState') !== null;
 }
@@ -57,10 +61,10 @@ export {
     GenerateLog,
     GetNamePlayer,
     ChangeObject,
-    GetGameState,
     ChangeGameState,
     SetGameState,
     GameState,
     DiceRoll,
-    GameStateExsists
+    GameStateExsists,
+    GetPlayer
 };
