@@ -56,6 +56,14 @@ function GameStateExsists() {
     return localStorage.getItem('gameState') !== null;
 }
 
+function GetPlayerColor() { 
+    return (GetPlayer() === 1) ? 'lightblue' : 'lightgreen';
+}
+
+function MaxBoard() { 
+    return 32;
+}
+
 export {
     GenerateDiceRoll,
     GenerateLog,
@@ -66,5 +74,7 @@ export {
     GameState,
     DiceRoll,
     GameStateExsists,
-    GetPlayer
+    GetPlayer,
+    GetPlayerColor,
+    MaxBoard
 };

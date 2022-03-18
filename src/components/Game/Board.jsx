@@ -3,12 +3,12 @@ import React from 'react'
 import './Board.css';
 import BoardLine from './BoardLine';
 
-export default function Board({ items }) {
+export default function Board({ items, selectBoardItem, selectAction}) {
   if (items.length > 0) {
     return (
       <div className='Board Box'>
         {
-          items.map((item, i) => <BoardLine key={i.toString()} items={item} />)
+          items.map((item, i) => <BoardLine key={i.toString()} idLine={i} items={item} selectBoardItem={selectBoardItem} selectAction={selectAction}/>)
         }
       </div>
     )
