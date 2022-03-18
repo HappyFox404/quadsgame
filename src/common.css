@@ -77,3 +77,14 @@ input[type="text"]:focus {
   border-color: #86cbfd;
   box-shadow: 0 0 10px #86cbfd;
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #86cbfd;
+}
