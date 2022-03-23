@@ -56,12 +56,28 @@ function GameStateExsists() {
     return localStorage.getItem('gameState') !== null;
 }
 
+const player1 = 'lightblue';
+const player2 = 'lightgreen';
+
 function GetPlayerColor() { 
-    return (GetPlayer() === 1) ? 'lightblue' : 'lightgreen';
+    return (GetPlayer() === 1) ? player1 : player2;
+}
+
+function GetPlayerColorValue(value) { 
+    return (value === 1) ? player1 : player2;
 }
 
 function MaxBoard() { 
     return 32;
+}
+
+function SelectItem(err, i, j, value) { 
+    return {
+        err: err,
+        i: i,
+        j: j,
+        value: value
+    }
 }
 
 export {
@@ -76,5 +92,7 @@ export {
     GameStateExsists,
     GetPlayer,
     GetPlayerColor,
-    MaxBoard
+    MaxBoard,
+    GetPlayerColorValue,
+    SelectItem
 };

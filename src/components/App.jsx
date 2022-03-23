@@ -93,10 +93,40 @@ export default function App() {
     setSelectBoardItem(items);
   }
 
+  const FinalChechItems = (elements) => {
+    
+    return true;
+  };
+
+  const ChoiceItems = (elements) => { 
+    if (elements.find(item => item.err === true) === undefined) {
+
+      let pole = [];
+      for (let i = 0; i < MaxBoard(); i++) {
+        let line = [];
+        for (let j = 0; j < MaxBoard(); j++) {
+          if (elements.find(item => item.i === i && item.j === j) !== undefined) {
+            line.push(GetPlayer());
+          } else {
+            line.push(BoardQuads[i][j]);
+          }
+        }
+        pole.push(line);
+      }
+
+      console.log(pole);
+      console.info("Ячейки доступны");
+      setBoardQuads(pole);
+      NextPlayer();
+    } else { 
+      console.error("Ячейки заблокированы");
+    }
+  };
+
   return (
     <div className='App'>
       <div style={{flex : "0.25"}}></div>
-      <Board items={BoardQuads} selectBoardItem={SelectBoardItem} selectAction={SetSelectItem}/>
+      <Board items={BoardQuads} selectBoardItem={SelectBoardItem} selectAction={SetSelectItem} choiceItems={ChoiceItems}/>
       <div style={{flex : "0.25"}}></div>
       <Tools logs={LogItems} settingsItems={SettingsItems} changeSetting={ChangeSettings} actionNewGame={NewGame} actionNextPlayer={NextPlayer}/>
     </div>
